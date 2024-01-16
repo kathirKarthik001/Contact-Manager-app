@@ -1,18 +1,29 @@
+// Card component
 import React from 'react';
+import {  useNavigate } from 'react-router-dom';
+import user from '../images/user.png';
 
-const Card = ({ name , email , deleteContact}) => {
+const Card = ({ id, name, email, deleteContact }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/contacts/${id}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`);
+  };
+
   return (
-    <div className="item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <div >
-        <img src="https://static-00.iconduck.com/assets.00/user-icon-2048x2048-ihoxz4vq.png" alt="img" className="ui avatar image" />
+    <div className="item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', justifySelf: 'center',cursor:'pointer' }}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <img src={user} alt="img" className="ui avatar image" style={{ marginRight: '10px' }} />
+        <div onClick={handleCardClick}>
+          <div className="content" style={{ width: '200px', padding: '5px' }}>
+            <div className="ui header">{name}</div>
+            <div>{email}</div>
+          </div>
+        </div>
       </div>
-      <div className="content" style={{ width:'200px',padding:'5px'}}>
-        <div className="ui header">{name}</div>
-        <div>{email}</div>
-      </div>
-      <div className="" style={{alignSelf:'center'}}>
-        <button onClick={deleteContact} className='ui blue basic button' style={{textAlign:'center',width:'30x'}}>
-        <i className=" trash alternate outline icon" style={{ color: 'blue',padding:'6px',height:'20px',paddingTop:'3px' }} />
+      <div className="" style={{ alignSelf: 'center' }}>
+        <button onClick={deleteContact} className='ui blue basic button' style={{ textAlign: 'center', width: '60px' }}>
+          <i className="trash alternate outline icon" style={{ color: 'blue', padding: '6px', height: '20px', paddingTop: '3px' }} />
         </button>
       </div>
     </div>

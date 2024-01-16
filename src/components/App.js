@@ -3,7 +3,11 @@ import './App.css';
 import Header from './Header';
 import Addcontact from './Addcontact';
 import Contactlist from './Contactlistmenu';
+import Contactcard from './Contactcard';
 import Author from './Author';
+
+import { BrowserRouter  , Routes , Route } from 'react-router-dom';
+
 
 function App() {
   const [contacts, setContacts] = useState(()=>{
@@ -36,11 +40,23 @@ function App() {
   
   return (
     <div className='ui container'>
+      <BrowserRouter>
+
       <Header />
-      <Addcontact onAddContact={handleAddContact} />
-      <Contactlist contacts={contacts} deleteContact={deleteContact} />
-      <Author/>
+
+      <Routes>
+
+      <Route path='/' 
+       Component={() => <Contactlist contacts={contacts} deleteContact={deleteContact}/>}/>
+      <Route path='/add'  Component={()=><Addcontact onAddContact={handleAddContact} />}/>
+      <Route path={`/contacts/:id`} 
+      Component={Contactcard}></Route>
       
+
+      </Routes>
+
+      <Author/>
+      </BrowserRouter>
 
     </div>
   );
