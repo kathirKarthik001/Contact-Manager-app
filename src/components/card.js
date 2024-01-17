@@ -5,9 +5,12 @@ import user from '../images/user.png';
 
 const Card = ({ id, name, email, deleteContact }) => {
   const navigate = useNavigate();
-
   const handleCardClick = () => {
     navigate(`/contacts/${id}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`);
+  };
+
+  const editClick = () => {
+    navigate(`/edit/${id}?id=${id}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`);
   };
 
   return (
@@ -21,11 +24,21 @@ const Card = ({ id, name, email, deleteContact }) => {
           </div>
         </div>
       </div>
+
+    
+         <div className="" style={{ alignSelf: 'center' }}>
+          <button  onClick={editClick}    className='ui blue basic button' style={{ textAlign: 'center', width: '60px' }}>
+          <i className="edit alternate outline icon" style={{ color: 'blue', padding: '6px', height: '20px', paddingTop: '3px' }} />
+          </button>
+        </div>
+     
+
       <div className="" style={{ alignSelf: 'center' }}>
-        <button onClick={deleteContact} className='ui blue basic button' style={{ textAlign: 'center', width: '60px' }}>
-          <i className="trash alternate outline icon" style={{ color: 'blue', padding: '6px', height: '20px', paddingTop: '3px' }} />
+        <button onClick={deleteContact} className='ui red basic button' style={{ textAlign: 'center', width: '60px' }}>
+          <i className="trash alternate outline icon" style={{ color: 'red', padding: '6px', height: '20px', paddingTop: '3px' }} />
         </button>
       </div>
+      
     </div>
   );
 };
