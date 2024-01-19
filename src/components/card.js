@@ -14,9 +14,11 @@ const Card = ({ id, name, email, deleteContact }) => {
   };
 
   return (
-    <div className="item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', justifySelf: 'center',cursor:'pointer' }}>
+    <div className="item " style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',cursor:'pointer' }}>
+
+      
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={user} alt="img" className="ui avatar image" style={{ marginRight: '10px' }} />
+        <img src={user} alt="img" className="ui avatar image" style={{ marginRight: '2px' }} />
         <div onClick={handleCardClick}>
           <div className="content" style={{ width: '200px', padding: '5px' }}>
             <div className="ui header">{name}</div>
@@ -25,19 +27,23 @@ const Card = ({ id, name, email, deleteContact }) => {
         </div>
       </div>
 
-    
-         <div className="" style={{ alignSelf: 'center' }}>
-          <button  onClick={editClick}    className='ui blue basic button' style={{ textAlign: 'center', width: '60px' }}>
-          <i className="edit alternate outline icon" style={{ color: 'blue', padding: '6px', height: '20px', paddingTop: '3px' }} />
+      <div style={{marginLeft: 'auto',display:'flex',justifySelf:'flex-end' }}>
+
+        <div className="" style={{ alignSelf: 'center' }}>
+          <button  onClick={editClick}    className='ui blue basic button' style={{ textAlign: 'center', width: '40px',display:'flex',alignItems:'center',justifyContent:'center' }}>
+          <i className="edit alternate outline icon" style={{ color: 'blue', padding: '6px', height: '10px',paddingTop:'0px' }} />
           </button>
         </div>
      
 
-      <div className="" style={{ alignSelf: 'center' }}>
-        <button onClick={deleteContact} className='ui red basic button' style={{ textAlign: 'center', width: '60px' }}>
-          <i className="trash alternate outline icon" style={{ color: 'red', padding: '6px', height: '20px', paddingTop: '3px' }} />
+        <div className="" style={{ alignSelf: 'center' }}>
+        <button onClick={deleteContact} className='ui red basic button' style={{ textAlign: 'center', width: '40px',display:'flex',alignItems:'center',justifyContent:'center' }}>
+          <i className="trash alternate outline icon" style={{ color: 'red', padding: '6px', height: '10px',paddingTop:'0px'  }} />
         </button>
+        </div>
+
       </div>
+       
       
     </div>
   );
